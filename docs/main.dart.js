@@ -60849,7 +60849,7 @@ A.Bx.prototype={
 V(a){var s=null
 return new A.rE(B.FT,"Showcase",A.a7Z(s,A.aa4(B.P,s,s,B.i),B.i,!0),s)}}
 A.DJ.prototype={
-V(a){return new A.tQ(A.ak8(new A.YZ(A.d([new A.io("Terminvox","Andrey","https://berlogabob.github.io/terminvox/","assets/pic_termin.jpeg"),new A.io("All Eyes on You","Inge","https://editor.p5js.org/_ina.luma_/full/H38VUTeaW","assets/pic_allEys.jpeg"),new A.io("Patient Quilt","Nadine","https://editor.p5js.org/naydino/full/Uvk1SvGQd","assets/Pic-patient.jpeg"),new A.io("Ink Police","Nadine","https://editor.p5js.org/naydino/full/9Q6PxRYjE","assets/pic_ink.jpeg"),new A.io("Audio Engine","Max Cave","https://editor.p5js.org/naydino/full/ZMzXXFadt","assets/pic_audioEng.jpeg"),new A.io("Snake Agent","Jo\xe3o Filipe","https://editor.p5js.org/naydino/full/RKH015k-5","assets/pic_snake.jpeg")],t.AI))),null)}}
+V(a){return new A.tQ(A.ak8(new A.YZ(A.d([new A.io("Terminvox","Andrey","https://berlogabob.github.io/terminvox/","assets/pic_termin.jpg"),new A.io("All Eyes on You","Inge","https://editor.p5js.org/_ina.luma_/full/H38VUTeaW","assets/pic_allEys.jpeg"),new A.io("Patient Quilt","Nadine","https://editor.p5js.org/naydino/full/Uvk1SvGQd","assets/Pic-patient.jpeg"),new A.io("Ink Police","Nadine","https://editor.p5js.org/naydino/full/9Q6PxRYjE","assets/pic_ink.jpeg"),new A.io("Audio Engine","Max Cave","https://editor.p5js.org/naydino/full/ZMzXXFadt","assets/pic_audioEng.jpeg"),new A.io("Snake Agent","Jo\xe3o Filipe","https://editor.p5js.org/naydino/full/RKH015k-5","assets/pic_snake.jpeg")],t.AI))),null)}}
 A.YZ.prototype={
 $2(a,b){var s,r,q,p=null,o=b.b,n=o>1200
 if(n)s=24

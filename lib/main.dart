@@ -32,7 +32,7 @@ class ShowcasePage extends StatelessWidget {
         title: 'Terminvox',
         author: 'Andrey',
         url: 'https://berlogabob.github.io/terminvox/',
-        imageAsset: 'assets/pic_termin.jpeg',
+        imageAsset: 'assets/pic_termin.jpg',
       ),
       WorkItem(
         title: 'All Eyes on You',
