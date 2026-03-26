@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -126,6 +127,17 @@ class WorkCard extends StatefulWidget {
 class _WorkCardState extends State<WorkCard> {
   bool _isHovered = false;
 
+  Future<void> _launchUrl(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    try {
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      }
+    } catch (e) {
+      debugPrint('Error launching $urlString: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -219,9 +231,5 @@ class _WorkCardState extends State<WorkCard> {
         ),
       ),
     );
-  }
-
-  void _launchUrl(String urlString) {
-    debugPrint('Opening: $urlString');
   }
 }
