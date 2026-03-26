@@ -21,11 +21,13 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build web
-        run: flutter build web --base-href /showcase/ --release
+      - name: Build web to docs folder
+        run: flutter build web --base-href /showcase/ --release --output=docs/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+      - name: Commit and push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Deploy: Update docs folder with latest build [skip ci]" && git push)
+
