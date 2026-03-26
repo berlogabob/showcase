@@ -66,18 +66,35 @@ class ShowcasePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 32,
-            mainAxisSpacing: 32,
-            childAspectRatio: 0.9,
-          ),
-          itemCount: works.length,
-          itemBuilder: (context, index) => WorkCard(work: works[index]),
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          final padding = width > 1200 ? 32.0 : width > 768 ? 24.0 : 16.0;
+          final spacing = width > 1200 ? 32.0 : width > 768 ? 24.0 : 16.0;
+          
+          int crossAxisCount;
+          if (width > 1200) {
+            crossAxisCount = 3;
+          } else if (width > 768) {
+            crossAxisCount = 2;
+          } else {
+            crossAxisCount = 1;
+          }
+
+          return Padding(
+            padding: EdgeInsets.all(padding),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: spacing,
+                mainAxisSpacing: spacing,
+                childAspectRatio: 0.9,
+              ),
+              itemCount: works.length,
+              itemBuilder: (context, index) => WorkCard(work: works[index]),
+            ),
+          );
+        },
       ),
     );
   }
