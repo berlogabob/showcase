@@ -70,8 +70,9 @@ class ShowcasePage extends StatelessWidget {
       body: LayoutBuilder(
         builder: (context, constraints) {
           final width = constraints.maxWidth;
-          final padding = width > 1200 ? 32.0 : width > 768 ? 24.0 : 16.0;
-          final spacing = width > 1200 ? 32.0 : width > 768 ? 24.0 : 16.0;
+          final height = constraints.maxHeight;
+          final padding = width > 1200 ? 24.0 : width > 768 ? 16.0 : 12.0;
+          final spacing = width > 1200 ? 20.0 : width > 768 ? 16.0 : 12.0;
           
           int crossAxisCount;
           if (width > 1200) {
@@ -82,14 +83,19 @@ class ShowcasePage extends StatelessWidget {
             crossAxisCount = 1;
           }
 
+          final availableHeight = height - (padding * 2);
+          final cardHeight = availableHeight / 2;
+          final childAspectRatio = (width - (padding * 2) - spacing) / crossAxisCount / cardHeight;
+
           return Padding(
             padding: EdgeInsets.all(padding),
             child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: crossAxisCount,
                 crossAxisSpacing: spacing,
                 mainAxisSpacing: spacing,
-                childAspectRatio: 0.9,
+                childAspectRatio: childAspectRatio,
               ),
               itemCount: works.length,
               itemBuilder: (context, index) => WorkCard(work: works[index]),
@@ -157,7 +163,7 @@ class _WorkCardState extends State<WorkCard> {
           child: Column(
             children: [
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Image.asset(
                   widget.work.imageAsset,
                   width: double.infinity,
@@ -165,11 +171,11 @@ class _WorkCardState extends State<WorkCard> {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Flexible(
                         child: Column(
@@ -181,19 +187,19 @@ class _WorkCardState extends State<WorkCard> {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF1E1E1E),
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 3),
                             Text(
                               widget.work.author,
                               textAlign: TextAlign.center,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 11,
                                 color: Colors.grey,
                               ),
                             ),
@@ -210,11 +216,11 @@ class _WorkCardState extends State<WorkCard> {
                               border: Border.all(color: Colors.grey.shade300),
                               borderRadius: BorderRadius.circular(4),
                             ),
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
                             child: const Text(
                               'Open',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF1E1E1E),
                               ),
