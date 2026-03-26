@@ -24,10 +24,11 @@ jobs:
       - name: Build web to docs folder
         run: flutter build web --base-href /showcase/ --release --output=docs/
 
-      - name: Commit and push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add docs/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Deploy: Update docs folder with latest build [skip ci]" && git push)
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-docs
+          path: docs/
+
+
 
